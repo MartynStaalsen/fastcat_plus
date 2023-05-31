@@ -12,7 +12,8 @@ buses:
     devices:
     - device_class: IGNORE
     - device_class: IGNORE
-    - device_class: IGNORE
+    - device_class: El3004
+      name: el3004_tc_location_1
     - device_class: IGNORE
     - device_class: IGNORE
     - device_class: IGNORE
@@ -33,7 +34,17 @@ buses:
         request_signal_name: output_eu_ch1
 
     - device_class: Logger
-      name: my_logger
+      name: temp_logger
       signals:
       - observed_device_name: filt_ma_1
         request_signal_name: output
+    - device_class: Logger
+      name: val_logger
+      signals:
+      - observed_device_name: el3004_tc_location_1
+        request_signal_name: voltage_ch1
+    - device_class: Logger
+      name: val2_logger
+      signals:
+      - observed_device_name: el3004_tc_location_1
+        request_signal_name: adc_value_ch1

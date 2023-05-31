@@ -13,7 +13,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-option(BUILD_TESTS "Option to build unit and device test programs" OFF)
+option(BUILD_TESTS "Option to build unit and device test programs" ON)
 option(DISABLE_DEBUG_PRINTS "Option to disable debug prints, default off" OFF)
 
 if(DISABLE_DEBUG_PRINTS)
@@ -56,7 +56,7 @@ FetchContent_Declare(jsd
     #GIT_REPOSITORY https://github.com/nasa-jpl/jsd.git
     #GIT_TAG v2.3.2
     GIT_REPOSITORY https://github.com/MartynStaalsen/jsd_plus
-    GIT_TAG 71be5c8c31f667c8d633c36d6f16e184dac5b93e
+    GIT_TAG 76e8da9583f0278217136e928ef41039c04e718d
     )
 FetchContent_MakeAvailable(jsd)
 

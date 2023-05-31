@@ -91,6 +91,7 @@ add_library(fastcat STATIC
     jsd/egd_offline.cc
     jsd/el2124_offline.cc
     jsd/el4102_offline.cc
+    jsd/el3004_offline.cc
     jsd/el3208_offline.cc
     jsd/el3602_offline.cc
     jsd/el3162_offline.cc

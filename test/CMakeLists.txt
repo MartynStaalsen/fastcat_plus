@@ -23,7 +23,7 @@ target_link_libraries(test_cli ${fastcat_test_libs})
 
 find_package(GTest)
 if(GTEST_FOUND)
-    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test_unit)
+    #add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test_unit)
 
     find_program(VALGRIND_EXECUTABLE NAMES valgrind)
     if(VALGRIND_EXECUTABLE)

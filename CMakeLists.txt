@@ -57,10 +57,14 @@ FetchContent_Declare(jsd
     #GIT_TAG v2.3.2
     GIT_REPOSITORY https://github.com/MartynStaalsen/jsd_plus
 <<<<<<< HEAD
+<<<<<<< HEAD
     GIT_TAG 37d65520882d75547ee42bf5c6c9b9fa9fa23ef6
 =======
     GIT_TAG 71be5c8c31f667c8d633c36d6f16e184dac5b93e
 >>>>>>> 60ff023 (el3004 builds...)
+=======
+    GIT_TAG 76e8da9583f0278217136e928ef41039c04e718d
+>>>>>>> fac0a5a (el3004 kinda working...)
     )
 FetchContent_MakeAvailable(jsd)
 

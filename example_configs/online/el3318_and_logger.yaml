@@ -1,0 +1,39 @@
+fastcat:
+  target_loop_rate_hz:   100
+  zero_latency_required: False
+  actuator_position_directory:        /tmp/
+  actuator_fault_on_missing_pos_file: False
+
+buses:
+  - type: jsd_bus
+    ifname: enp11s0
+    enable_autorecovery: False
+
+    devices:
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: IGNORE
+    - device_class: El3318
+      name: el3318_tc_location_1
+      element: TYPE_K
+
+  - type: fastcat_bus
+    ifname: fcat_bus_1
+    devices:
+    - device_class: Filter
+      name: filt_ma_1
+      filter_type: MOVING_AVERAGE
+      buffer_size : 25
+      signals:
+      - observed_device_name: el3318_tc_location_1
+        request_signal_name: output_eu_ch1
+
+    - device_class: Logger
+      name: my_logger
+      signals:
+      - observed_device_name: filt_ma_1
+        request_signal_name: output

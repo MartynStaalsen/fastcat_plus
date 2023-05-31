@@ -106,6 +106,7 @@ add_library(fastcat STATIC
     fastcat_devices/signal_generator.cc
     fastcat_devices/function.cc
     fastcat_devices/conditional.cc
+    fastcat_devices/logger.cc
     fastcat_devices/pid.cc
     fastcat_devices/saturation.cc
     fastcat_devices/schmitt_trigger.cc
@@ -131,4 +132,3 @@ target_link_libraries(fastcat
 add_dependencies(fastcat
     fcgen
     )
-

@@ -361,6 +361,25 @@ states:
     - name: adc_value_ch8
       type: int16_t
 
+  - name: el3004
+    fields:
+    - name: voltage_ch1
+      type: double
+    - name: adc_value_ch1
+      type: int32_t
+    - name: voltage_ch2
+      type: double
+    - name: adc_value_ch2
+      type: int32_t
+    - name: voltage_ch3
+      type: double
+    - name: adc_value_ch3 
+      type: int32_t
+    - name: voltage_ch4
+      type: double
+    - name: adc_value_ch4 
+      type: int32_t
+
   - name: el3162
     fields:
       - name: voltage_ch1

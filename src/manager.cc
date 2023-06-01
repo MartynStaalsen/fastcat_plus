@@ -16,7 +16,6 @@
 // Include external then project includes
 #include "fastcat/fastcat_devices/commander.h"
 #include "fastcat/fastcat_devices/conditional.h"
-#include "fastcat/fastcat_devices/logger.h"
 #include "fastcat/fastcat_devices/faulter.h"
 #include "fastcat/fastcat_devices/filter.h"
 #include "fastcat/fastcat_devices/fts.h"
@@ -222,6 +221,7 @@ bool fastcat::Manager::Process(double external_time)
   for (auto it = jsd_map_.begin(); it != jsd_map_.end(); ++it) {
     jsd_read(it->second, 1e6 / target_loop_rate_hz_);
   }
+
   // Pass the PDO read time for consistent timestamping before the device Read()
   //   method is invoked
   double read_time;
@@ -234,7 +234,7 @@ bool fastcat::Manager::Process(double external_time)
   } else {
     read_time = jsd_time_get_time_sec();
   }
-  //MSG("Reading all JSD devices");
+  
   for (auto it = jsd_device_list_.begin(); it != jsd_device_list_.end(); ++it) {
     (*it)->SetTime(read_time);
 
@@ -242,7 +242,7 @@ bool fastcat::Manager::Process(double external_time)
       WARNING("Bad Process on %s", (*it)->GetName().c_str());
     }
   }
-  //MSG("Reading all Fastcat devices");
+
   for (auto it = fastcat_device_list_.begin(); it != fastcat_device_list_.end();
        ++it) {
     (*it)->SetTime(read_time);
@@ -264,10 +264,8 @@ bool fastcat::Manager::Process(double external_time)
     }
   }
 
-  //MSG("Writing commands");
   WriteCommands();
 
-  //MSG("Spinning JSD devices");
   // JSD devices are processed after the call to WriteCommands() because some
   // JSD devices need their internal state to be updated based on the changes
   // made by the queued commands.
@@ -285,11 +283,10 @@ bool fastcat::Manager::Process(double external_time)
     }
   }
 
-  //MSG("writting to jsd devices");
   for (auto it = jsd_map_.begin(); it != jsd_map_.end(); ++it) {
     jsd_write(it->second);
   }
-  //MSG("getting sdo responces form jsd devices");
+  
   // for each JSD context, pop their queues and push them onto the single
   // fastcat queue
   SdoResponse entry;
@@ -546,9 +543,6 @@ bool fastcat::Manager::ConfigFastcatBusFromYaml(YAML::Node node)
 
     } else if (0 == device_class.compare("Conditional")) {
       device = std::make_shared<Conditional>();
-
-    } else if (0 == device_class.compare("Logger")) {
-      device = std::make_shared<Logger>();
 
     } else if (0 == device_class.compare("Pid")) {
       device = std::make_shared<Pid>();
@@ -927,7 +921,7 @@ bool fastcat::Manager::LoadActuatorPosFile()
 {
   // Look for the existence of at least one actuator in the topology
   bool actuators_in_topo = false;
-  for (auto device = jsd_device_list_.begin(); device != jsd_device_list_.end(); ++device)
+  for (auto device = jsd_device_list_.begin(); device != jsd_device_list_.end(); ++device) 
   {
     if ((*device)->GetState()->type == GOLD_ACTUATOR_STATE ||
         (*device)->GetState()->type == PLATINUM_ACTUATOR_STATE) {

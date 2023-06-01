@@ -21,11 +21,6 @@ states:
     - name: output
       type: bool
 
-  - name: logger
-    fields:
-    - name: output
-      type: bool
-
   - name: schmitt_trigger
     fields:
     - name: output

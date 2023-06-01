@@ -286,7 +286,7 @@ bool fastcat::Manager::Process(double external_time)
   for (auto it = jsd_map_.begin(); it != jsd_map_.end(); ++it) {
     jsd_write(it->second);
   }
-  
+
   // for each JSD context, pop their queues and push them onto the single
   // fastcat queue
   SdoResponse entry;

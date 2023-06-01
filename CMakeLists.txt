@@ -56,7 +56,7 @@ FetchContent_Declare(jsd
     #GIT_REPOSITORY https://github.com/nasa-jpl/jsd.git
     #GIT_TAG v2.3.2
     GIT_REPOSITORY https://github.com/MartynStaalsen/jsd_plus
-    GIT_TAG 76e8da9583f0278217136e928ef41039c04e718d
+    GIT_TAG 37d65520882d75547ee42bf5c6c9b9fa9fa23ef6
     )
 FetchContent_MakeAvailable(jsd)
 
